@@ -1,4 +1,5 @@
 import React, { Component } from 'react'; 
+import Header from './Header';
 
 class Search extends Component {
     state = {
@@ -17,7 +18,7 @@ class Search extends Component {
     }
 
     handleSave = (book) => {
-        alert()
+        alert('SAVED!')
         fetch('/api/books', {
             method: 'POST',
             body: JSON.stringify(book),
@@ -32,14 +33,14 @@ class Search extends Component {
         console.log(this.state);
         return (
             <div>
-                <input type="text" onChange={this.handleSearch} />
-                {this.state.books.map(book => (
+                 <Header handleSearch = {this.handleSearch}/>
+                
+                <div style = {{marginTop: '25px'}}>{this.state.books.map(book => (
                     <div key={book.id}>
-                        <div>{book.volumeInfo.title}</div>
+                        <a href={book.volumeInfo.infoLink}>{book.volumeInfo.title}</a>
                         <div>{book.volumeInfo.authors}</div>
                         <div>{book.volumeInfo.description}</div>
-                        <div>{book.volumeInfo.infoLink}</div>
-                        <div>{book.volumeInfo?.imageLinks?.thumbnail}</div>
+                        <img src= {book.volumeInfo?.imageLinks?.thumbnail}/>
                         <button
                             onClick={() => this.handleSave({
                                 title: book.volumeInfo.title,
@@ -50,9 +51,10 @@ class Search extends Component {
                             })}
                         >
                             Save
-                        </button>
+                        </button> <hr/> 
                     </div>
                 ))}
+                </div>
             </div>
         );
     }

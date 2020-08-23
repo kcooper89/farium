@@ -29,6 +29,7 @@ router.delete('/api/books/:id', (req, res) => {
             res.json(book);
         })
         .catch(err => {
+            console.log(err)
             res.status(422).send(err);
         });
 });
