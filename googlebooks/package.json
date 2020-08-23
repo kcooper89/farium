@@ -1,7 +1,7 @@
 {
-  "name": "googlebooks",
+  "name": "googlebooks2",
   "version": "1.0.0",
-  "description": "googlebooks",
+  "description": "googlebooks2",
   "main": "server.js",
 
   "scripts": {
