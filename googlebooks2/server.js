@@ -17,6 +17,10 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://heroku_mlsc313k:h4d3cpegk
 
 const port = process.env.PORT || 3001;
 
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'))
+}
+
 app.listen(port, () => {
     console.log('Express server listening on port ' + port + '.');
 });
